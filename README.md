@@ -29,7 +29,7 @@ For more information about the Introduction, Dataset, and project workflow pleas
 ## Instructions 
 
 STEP 1
-Cloned the repo into my Final_Project directory:
+Cloned the Metaxcan harmonization tool lab repo into my Final_Project directory:
 ```bash
 cd ~/Final_Project
 git clone https://github.com/hakyimlab/summary-gwas-imputation.git
