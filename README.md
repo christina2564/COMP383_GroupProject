@@ -12,7 +12,8 @@ For more information about the Introduction, Dataset, and project workflow pleas
 - 
 ### In python 
 	- numpy 
-	- 
+	- scipy
+	- pandas
 
 ## Data set set up 
 To download ADHD GWAS summary statistics used to test pipeline:
