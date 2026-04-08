@@ -20,9 +20,16 @@ To download ADHD GWAS summary statistics used to test pipeline:
 ```bash
 wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCST90569000/GCST90568441/GCST90568441.tsv.gz
 ```
+## Instructions 
 
+STEP 1
+Cloned the repo into my Final_Project directory:
+```bash
+cd ~/Final_Project
+git clone https://github.com/hakyimlab/summary-gwas-imputation.git
+```
 
-## Installing Metxcan 
+### Installing Metxcan 
 For more information/instructions on downloading Metaxcan, go to the Metaxcan Lab GitHub: https://github.com/hakyimlab/MetaXcan/blob/master/README.md 
 
 ##
