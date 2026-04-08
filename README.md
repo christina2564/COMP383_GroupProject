@@ -1,34 +1,23 @@
 # COMP383_GroupProject
 Project 3 - Harmonize GWAS Summary Statistics for S-PrediXcan
 
+## Project Overview
+The purpose of this project was to create a pipe line 
 
-Move data from class server into our current folder:
+For more information about the Introduction, Dataset, and project workflow please look at the Wiki page.
 
-cp /home/data/Project3/AoU_AFR_phenotype_836850_ACAF_sumstats_for_S-PrediXcan.txt.gz .
 
-Downloading GWAS Inspector:
+## Dependencies Used
+- conda
+- 
+### In python 
+	- numpy 
+	- 
 
-R
+## Data set set up 
+To download ADHD GWAS summary statistics used to test pipeline:
+```bash
+wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCST90569000/GCST90568441/GCST90568441.tsv.gz
+```
 
-install.packages("GWASinspector")
 
-Getting template configuration file format for GWAS Inspector:
-
-get_config(".")
-
-outputs config.ini
-
-Run demo:
-
-#Runs a demo and outputs it in sample_outputs directory
-demo_inspector("sample_outputs")
-
-Output:
-GWASinspector_demo folder in sample_outputs
-
-Ran a test QC using demo_inspector()
-Output files were saved in the specified directory (sample_outputs)
-Reviewed generated outputs including:
-	QC report (Excel file)
-	plots (QQ plot, Manhattan plot, etc.)
-    log and summary files
