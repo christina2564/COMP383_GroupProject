@@ -15,11 +15,6 @@ For more information about the Introduction, Dataset, and project workflow pleas
 	- scipy
 	- pandas
 
-## Data set set up 
-To download ADHD GWAS summary statistics used to test pipeline:
-```bash
-wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCST90569000/GCST90568441/GCST90568441.tsv.gz
-```
 ## Instructions 
 
 STEP 1
@@ -33,6 +28,13 @@ Verify it downloaded correctly and that gwas_parsing.py is in the folder:
 ls ~/Final_Project/summary-gwas-imputation/src/
 ```
 gwas_parsing.py is in the output.
+
+
+## Data set set up 
+To download ADHD GWAS summary statistics used to test pipeline:
+```bash
+wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCST90569000/GCST90568441/GCST90568441.tsv.gz
+```
 
 ### Installing Metxcan (S-Predixcan)
 STEP 2 — DOWNLOAD MetaXcan (S-PrediXcan)
@@ -69,7 +71,7 @@ Check that genomic_tools_lib is accessible:
 python3 -c "import sys; sys.path.insert(0, '/home/mabdulmuiz/Final_Project/summary-gwas-imputation/src'); import genomic_tools_lib; print('OK')"
 ```
 
-STEP 4 — PATCH gwas_parsing.py
+### STEP 4 — PATCH gwas_parsing.py
 
 There is a bug in gwas_parsing.py that causes a crash when the
 input file does not have a sample_size column. Apply this fix:
@@ -79,8 +81,8 @@ sed -i 's/\[int(x) if not math.isnan(x) else "NA" for x in d.sample_size\]/[int(
 This only needs to be done once after cloning the repo.
 
 
-STEP 5 — HARMONIZATION SCRIPT
-
+### STEP 5 — HARMONIZATION SCRIPT
+ 
 Copy run_gwas_harmonization.py into my Final_Project directory:
 
 ```bash
@@ -126,6 +128,7 @@ If auto-detection fails for any column, we can override manually (example):
 ```
 
 Available column override flags:
+```bash
     --snp_col           SNP/variant ID column
     --effect_allele_col Effect allele column
     --other_allele_col  Non-effect allele column
@@ -135,6 +138,7 @@ Available column override flags:
     --freq_col          Allele frequency column
     --chr_col           Chromosome column
     --pos_col           Base pair position column
+```
 
 ### Running Predixcan
 STEP 7 — RUN S-PREDIXCAN ON HARMONIZED OUTPUT
@@ -171,4 +175,7 @@ Example using the GWAS Catalog file:
         --output_file ~/Final_Project/sample_outputs/spredixcan_results.csv
 ```
 To access your results:
+```bash
+cat /Final_Project/sample_outputs/spredixcan_results.csv
+```
 
