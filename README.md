@@ -45,7 +45,7 @@ wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCS
 ```
 
 Or you can also use the All of Us GWAS found in the class server. 
-Path for All of us: /home/data/Project3/
+Path for All of us: /home/data/Project3/AoU_AFR_phenotype_836850_ACAF_sumstats_for_S-PrediXcan.txt.gz
 
 ## Instructions
 STEP 1
@@ -130,8 +130,9 @@ On the command line run:
 snakemake --cores 4
 ```
 
+2. Run the code on the command line 
 
-2. Run the code on the command line yourself    
+    
 The script automatically detects column names from the input file.
 We do not need to specify column names for most standard GWAS files.
 
@@ -140,6 +141,13 @@ On command line (to use with your own gwas summary statistics with a different n
 python3 run_gwas_harmonization.py \
         -i /path/to/your_gwas_file.tsv.gz \
         -o /path/to/your_harmonized_output.txt.gz
+```
+To use with the GWAS form the calss server:
+
+```bash
+    python3 run_gwas_harmonization.py \
+        -i /home/data/Project3/AoU_AFR_phenotype_836850_ACAF_sumstats_for_S-PrediXcan.txt.gz \
+        -o ~/COMP383_GrouProject/sample_outputs/GCST90568441_harmonized.txt.gz
 ```
 
 Example using the GWAS Catalog file on this repo:
