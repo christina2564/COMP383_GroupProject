@@ -2,13 +2,13 @@
 Project 3 - Harmonize GWAS Summary Statistics for S-PrediXcan
 
 ## Project Overview
-The purpose of this project was to create a pipe line 
+The purpose of this project was to Evaluate different GWAS Harmonization tools, and determined the best one to use. With that determined tool, we created a snakefile pipeline for users to implement if they did not want to do as much coding. 
 
 For more information about the Introduction, Dataset, and project workflow please look at the Wiki page.
 
 
 ## Dependencies Used
-### Sodtwares
+### Softwares
 - conda -> creates an environment for Metxcan and Predixcan to be ran on 
 - Linux or macOS
 - Python 
@@ -39,18 +39,21 @@ cloned this repo
 ```bash
 git clone https://github.com/christina2564/COMP383_GroupProject
 ```
-In this repo you should have, config.yaml, environment.yaml, Snakefile, and run_gwas_harmonization.py all in the same directory 
+In this repo you should have config.yaml, environment.yaml, Snakefile, and run_gwas_harmonization.py all in the same directory 
 
-create a directory called gwas_stats. This is where you will store the gwas summary statistics you want to harmonize 
+Create a directory called gwas_stats. This is where you will store the gwas summary statistics you want to harmonize 
 ```bash
 gwas_stats
 ```
-To test if this works, download this gwas summary stat into the directory 
+
+To test if this works, download this GWAS file from GWAS Bank. 
 ```bash
 cd gwas_stats
 wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCST90569000/GCST90568441/GCST90568441.tsv.gz
 ```
+
 Or you can also use the All of Us GWAS found in the class server. 
+Path for All of us: /home/data/Project3/
 
 
 
@@ -69,11 +72,6 @@ ls ~/Final_Project/summary-gwas-imputation/src/
 gwas_parsing.py is in the output.
 
 
-### Data set set up 
-To download ADHD GWAS summary statistics used to test pipeline:
-```bash
-wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCST90569000/GCST90568441/GCST90568441.tsv.gz
-```
 
 ### Installing Metxcan (S-Predixcan)
 STEP 2 — DOWNLOAD MetaXcan (S-PrediXcan)
@@ -99,6 +97,7 @@ on bash
 ```bash
 python3 -c "import numpy, pandas, scipy; print('OK')"
 ```
+If they are not already downloaded
 Install pyliftover which is required by gwas_parsing.py:
 
 ```bash
