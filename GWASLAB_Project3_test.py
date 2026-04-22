@@ -17,7 +17,7 @@ mysumstats = gl.Sumstats("/home/data/Project3/hg38_AoU_AFR_phenotype_836850_ACAF
         sep = r"\t"
 )
 
-#this provides basica quality control checks on the current file that has been used for testing purp>
+#this provides basica quality control checks on the current file that has been used for testing purposes
 mysumstats.basic_check()
 
 mysumstats.harmonize(
@@ -41,7 +41,7 @@ with open("gwaslab_spredixcan_results.csv", newline='') as f:
     columns = reader.fieldnames
     print("Detected columns:", columns)
 
-    # Find columns automatically
+    # Find columns automatically and try to produce expected results
     used_col = None
     total_col = None
 
@@ -67,7 +67,7 @@ with open("gwaslab_spredixcan_results.csv", newline='') as f:
         except:
             pass
 
-# simplified output
+# provide output for the SNP percentage
 if total_sum > 0:
     print(f"Percentage of SNPs used: {(used_sum / total_sum) * 100:.2f}%")
 else:
