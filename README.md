@@ -39,7 +39,7 @@ cloned this repo
 ```bash
 git clone https://github.com/christina2564/COMP383_GroupProject
 ```
-In this repo you should have, config.yaml, environment.yaml, Snakefile, all in the same directory 
+In this repo you should have, config.yaml, environment.yaml, Snakefile, and run_gwas_harmonization.py all in the same directory 
 
 create a directory called gwas_stats. This is where you will store the gwas summary statistics you want to harmonize 
 ```bash
@@ -50,7 +50,7 @@ To test if this works, download this gwas summary stat into the directory
 cd gwas_stats
 wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCST90569000/GCST90568441/GCST90568441.tsv.gz
 ```
-
+Or you can also use the All of Us GWAS found in the class server. 
 
 
 
