@@ -4,39 +4,6 @@ Project 3 - Harmonize GWAS Summary Statistics for S-PrediXcan
 ## Project Overview
 The purpose of this project was to Evaluate different GWAS Harmonization tools, and determined the best one to use. With that determined tool, we created a snakefile pipeline for users to implement if they did not want to do as much coding. 
 
-Move data from class server into our current folder:
-
-cp /home/data/Project3/AoU_AFR_phenotype_836850_ACAF_sumstats_for_S-PrediXcan.txt.gz .
-
-Downloading GWAS Inspector:
-
-R
-
-install.packages("GWASinspector")
-
-Getting template configuration file format for GWAS Inspector:
-
-get_config(".")
-Make changes to this file to run GWAS Inspector
-
-outputs config.ini
-
-Run demo:
-
-#Runs a demo and outputs it in sample_outputs directory
-demo_inspector("sample_outputs")
-
-Output:
-GWASinspector_demo folder in sample_outputs
-
-Ran a test QC using demo_inspector()
-Output files were saved in the specified directory (sample_outputs)
-Reviewed generated outputs including:
-	QC report (Excel file)
-	plots (QQ plot, Manhattan plot, etc.)
-    log and summary files
-
-
 ## Dependencies Used
 ### Softwares
 - conda -> creates an environment for Metxcan and Predixcan to be ran on 
@@ -60,14 +27,6 @@ Reviewed generated outputs including:
 	- 
 	- 
 
-dir_data = /home/user/documents/input
-to 
-dir_data = /home/mabdulmuiz/Final_Project/data/sample_class_gwas
-
-dir_output = /home/user/documents/output
-to 
-dir_output = /home/mabdulmuiz/Final_Project/sample_outputs
-
 cloned this repo
 ```bash
 git clone https://github.com/christina2564/COMP383_GroupProject
@@ -88,27 +47,18 @@ wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCS
 Or you can also use the All of Us GWAS found in the class server. 
 Path for All of us: /home/data/Project3/
 
-Added these lines to the end of alt_headers.txt:
-
-EFFECT_ALL	ALT
-OTHER_ALL	REF
-MARKER	ID
-
-write file fix_header.py to fix the header in class data
-I feel like i didnt need to do this there should be a way to change it in alt_headers.txt
-
+## Instructions
 STEP 1
 Cloned the Metaxcan harmonization tool lab repo into my Final_Project directory:
 ```bash
-cd ~/Final_Project
+cd ~/COMP383_GroupProject
 git clone https://github.com/hakyimlab/summary-gwas-imputation.git
 ```
 Verify it downloaded correctly and that gwas_parsing.py is in the folder:
 ```bash
-ls ~/Final_Project/summary-gwas-imputation/src/
+ls ~/COMP383_GroupProject/summary-gwas-imputation/src/
 ```
 gwas_parsing.py is in the output.
-
 
 
 ### Installing Metxcan (S-Predixcan)
@@ -116,7 +66,7 @@ STEP 2 — DOWNLOAD MetaXcan (S-PrediXcan)
 
 Clone the MetaXcan repo into my Final_Project directory:
 ```bash
-cd ~/Final_Project
+cd ~/COMP383_GroupProject
 git clone https://github.com/hakyimlab/MetaXcan.git
 ```
 
@@ -144,7 +94,7 @@ pip install pyliftover --break-system-packages
 Check that genomic_tools_lib is accessible:
 
 ```bash
-python3 -c "import sys; sys.path.insert(0, '/home/mabdulmuiz/Final_Project/summary-gwas-imputation/src'); import genomic_tools_lib; print('OK')"
+python3 -c "import sys; sys.path.insert(0, '~/COMP383_GroupProject/summary-gwas-imputation/src'); import genomic_tools_lib; print('OK')"
 ```
 
 ### STEP 4 — PATCH gwas_parsing.py
@@ -153,31 +103,35 @@ There is a bug in gwas_parsing.py that causes a crash when the
 input file does not have a sample_size column. Apply this fix:
 
 ```bash
-sed -i 's/\[int(x) if not math.isnan(x) else "NA" for x in d.sample_size\]/[int(x) if (not isinstance(x, str) and not math.isnan(x)) else "NA" for x in d.sample_size]/' ~/Final_Project/summary-gwas-imputation/src/gwas_parsing.py
+sed -i 's/\[int(x) if not math.isnan(x) else "NA" for x in d.sample_size\]/[int(x) if (not isinstance(x, str) and not math.isnan(x)) else "NA" for x in d.sample_size]/' ~/COMP383_GroupProject/summary-gwas-imputation/src/gwas_parsing.py
 ```
 This only needs to be done once after cloning the repo.
 
 
-### STEP 5 — HARMONIZATION SCRIPT
- 
-Copy run_gwas_harmonization.py into my Final_Project directory:
+### STEP 5 — Updating GWAS_PARSING_SCRIPT
 
-```bash
-cp run_gwas_harmonization.py ~/Final_Project/
-```
 Open the script and update the GWAS_PARSING_SCRIPT path at the top
 if your directory structure is different:
 
 ```python
     GWAS_PARSING_SCRIPT = os.path.expanduser(
-        "~/Final_Project/summary-gwas-imputation/src/gwas_parsing.py"
+        "~/COMP383_GroupProject/summary-gwas-imputation/src/gwas_parsing.py"
     )
 ```
 
 
 ### Running harmonization tool
 STEP 6 — RUN THE HARMONIZATION SCRIPT
+THere are two ways to run harmonization too:
+1. Using the Snakefile
 
+On the command line run:
+```bash
+snakemake --cores 4
+```
+
+
+2. Run the code on the command line yourself    
 The script automatically detects column names from the input file.
 We do not need to specify column names for most standard GWAS files.
 
@@ -237,9 +191,8 @@ if conda is not installed, run:
 ```bash
 conda env create -f /path/to/this/repo/software/conda_env.yaml
 ```
-
 After harmonization, run S-PrediXcan using the standardized column names that the harmonization script will always output:
-
+To run harmonized GWAS 
 ```bash
     python3 ~/Final_Project/MetaXcan/software/SPrediXcan.py \
         --model_db_path /home/data/Project3/elastic-net-with-phi/en_Whole_Blood.db \
@@ -279,6 +232,3 @@ To access your results:
 ```bash
 cat /Final_Project/sample_outputs/spredixcan_results.csv
 ```
-
-inspector <- setup_inspector("config.ini")
-run_inspector(inspector)
