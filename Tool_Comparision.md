@@ -2,7 +2,7 @@
 
 | Tool Name | Metaxcan | MungeSumstats | GWASLab|
 |--- | --- | --- | --- | 
-|Time Running Tool | 5 min | 16 min | 5 min | 
+|Time Running Tool - GWAS ADHD | 5 min | 16 min | 5 min | 
 | Difficulty Running - scale of 1-10 | 3 | 8 | 5 | 
 | Difficulty installing packages prior to runnings - scale of 1-10 | 3 | 9 | 4 | 
 | Preprocessing Required | yes | no | yes | 
