@@ -85,7 +85,11 @@ on bash
 ```bash
 python3 -c "import numpy, pandas, scipy; print('OK')"
 ```
-If they are not already downloaded
+If they are not already downloaded, run this on the command line:
+
+```bash
+pip install numpy pandas scipy
+```
 Install pyliftover which is required by gwas_parsing.py:
 
 ```bash
@@ -100,7 +104,7 @@ python3 -c "import sys; sys.path.insert(0, '~/COMP383_GroupProject/summary-gwas-
 ### STEP 4 — PATCH gwas_parsing.py
 
 There is a bug in gwas_parsing.py that causes a crash when the
-input file does not have a sample_size column. Apply this fix:
+input file does not have a sample_size column. Apply this fix on the command line:
 
 ```bash
 sed -i 's/\[int(x) if not math.isnan(x) else "NA" for x in d.sample_size\]/[int(x) if (not isinstance(x, str) and not math.isnan(x)) else "NA" for x in d.sample_size]/' ~/COMP383_GroupProject/summary-gwas-imputation/src/gwas_parsing.py
@@ -123,14 +127,14 @@ if your directory structure is different:
 ### Running harmonization tool
 STEP 6 — RUN THE HARMONIZATION SCRIPT
 THere are two ways to run harmonization too:
-1. Using the Snakefile
+#### 1. Using the Snakefile
 
 On the command line run:
 ```bash
-snakemake --cores 4
+snakemake --cores 4 --config input_dir="/path/to/new_lab_data"
 ```
 
-2. Run the code on the command line 
+#### 2. Run the code on the command line 
 
     
 The script automatically detects column names from the input file.
@@ -185,9 +189,6 @@ Available column override flags:
 STEP 7 — RUN S-PREDIXCAN ON HARMONIZED OUTPUT
 To run predixcan you must navigate to the software folder in the folder Metaxcan
 
-```bash
-cd Metaxcan/software
-```
 Activate the conda environment to run Predixcan in:
 
 ```bash
