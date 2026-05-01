@@ -1,3 +1,6 @@
+#This script runs S-PrediXXcan from the terminal
+#Users can execute the pipline through the line:
+#pythong project3_predixcan.py
 import os
 
 os.system(
