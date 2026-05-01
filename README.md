@@ -163,7 +163,7 @@ Available column override flags:
 ```
 
 ### Using a Reference Panel for Coordinate-Based Variant IDs
-STEP 7 
+STEP 6 
 
 Some GWAS files (e.g., All of Us) use coordinate-based variant IDs (e.g., chr1:61920:G:A) instead of rsIDs. S-PrediXcan cannot match these against its model unless you provide a reference panel.
 
@@ -189,7 +189,7 @@ Run harmonization with the reference panel:
 
 
 ### Running Predixcan on Harmonized  Output
-STEP 8 
+STEP 7 
 To run S-Predixcan you must navigate to the software folder in the folder Metaxcan
 
 Activate the conda environment to run Predixcan in:
