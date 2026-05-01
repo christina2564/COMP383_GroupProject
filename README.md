@@ -162,8 +162,34 @@ Available column override flags:
     --pos_col           Base pair position column
 ```
 
-### Running Predixcan on Hamronized Output
+### Using a Reference Panel for Coordinate-Based Variant IDs
 STEP 7 
+
+Some GWAS files (e.g., All of Us) use coordinate-based variant IDs (e.g., chr1:61920:G:A) instead of rsIDs. S-PrediXcan cannot match these against its model unless you provide a reference panel.
+
+Download the 1000 Genomes reference panel:
+```bash
+    cd ~/COMP383_GroupProject
+    wget -O sample_data.tar "https://zenodo.org/record/3657902/files/sample_data.tar?download=1"
+    tar -xf sample_data.tar
+```
+
+The file you need is:
+
+    ~/COMP383_GroupProject/sample_data/1000G_hg38/variant_metadata.txt.gz
+
+Run harmonization with the reference panel:
+
+```bash
+    python3 run_gwas_harmonization.py \
+        -i /path/to/your_aou_gwas.tsv.gz \
+        -o /path/to/your_harmonized_output.txt.gz \
+        --reference_panel ~/COMP383_GroupProject/sample_data/1000G_hg38/variant_metadata.txt.gz
+```
+
+
+### Running Predixcan on Harmonized  Output
+STEP 8 
 To run S-Predixcan you must navigate to the software folder in the folder Metaxcan
 
 Activate the conda environment to run Predixcan in:
@@ -195,11 +221,13 @@ To run your own harmonized GWAS on S-Predixcan:
         --se_column standard_error \
         --pvalue_column pvalue \
         --pvalue_column pvalue \
-        --keep_non_rsid \
+		--keep_non_rsid \
+    	--model_db_snp_key varID \
+    	--snp_column panel_variant_id \
         --output_file /path/to/results/spredixcan_results.csv
 ```
 
-Example with harmonized All of Us from class server:
+Example with harmonized All of Us from class server using the reference panel:
 
 ```bash
     python3 ~/COMP383_GroupProject/MetaXcan/software/SPrediXcan.py \
