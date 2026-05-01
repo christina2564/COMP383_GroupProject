@@ -1,3 +1,5 @@
+#Users may use this code to test the sample provided by Dr. Wheeler, but may also be updated in order to run other samples
+
 import gwaslab as gl
 
 mysumstats = gl.Sumstats(
