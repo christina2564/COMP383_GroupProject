@@ -31,7 +31,7 @@ In this repo you should now have run_gwas_harmonization.py
 
 To test MetaXcan  harmonization, download this ADHD-GWAS file from GWAS Bank. 
 ```bash
-cd gwas_stats
+cd COMP383_GroupProject
 wget http://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90568001-GCST90569000/GCST90568441/GCST90568441.tsv.gz
 ```
 
