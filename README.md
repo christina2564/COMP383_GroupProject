@@ -22,7 +22,7 @@ The purpose of this project was to evaluate different GWAS Harmonization tools, 
 	- Pan-UK BioBank
 
 ### Cloning Repo and Downloading GWAS
-cloned this repo
+Cloned this repo
 ```bash
 git clone https://github.com/christina2564/COMP383_GroupProject
 ```
@@ -186,7 +186,14 @@ Run harmonization with the reference panel:
         -o /path/to/your_harmonized_output.txt.gz \
         --reference_panel ~/COMP383_GroupProject/sample_data/1000G_hg38/variant_metadata.txt.gz
 ```
+Then run S-PrediXcan using MASHR models (not elastic net) with these
+additional flags:
 
+```bash
+    --keep_non_rsid \
+    --model_db_snp_key varID \
+    --snp_column panel_variant_id \
+```
 
 ### Running Predixcan on Harmonized  Output
 STEP 7 
