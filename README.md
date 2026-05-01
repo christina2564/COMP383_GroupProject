@@ -43,12 +43,12 @@ Path for All of us: /home/data/Project3/AoU_AFR_phenotype_836850_ACAF_sumstats_f
 STEP 1
 Cloned the Metaxcan harmonization tool lab repo under this directory:
 ```bash
-cd ~/COMP383_GroupProject
+cd ~/COMP383_GroupProject #move into the COMP383_GroupProject directory
 git clone https://github.com/hakyimlab/summary-gwas-imputation.git
 ```
 Verify it downloaded correctly and that gwas_parsing.py is in the folder:
 ```bash
-ls ~/COMP383_GroupProject/summary-gwas-imputation/src/
+ls ~/COMP383_GroupProject/summary-gwas-imputation/src/ # can check to see if gwas_parsing.py is in this directory
 ```
 gwas_parsing.py is in the output.
 
@@ -75,21 +75,22 @@ STEP 3 — INSTALL DEPENDENCIES
 Check that numpy, pandas, and scipy are available:
 Run on the command line:
 ```bash
-python3 -c "import numpy, pandas, scipy; print('OK')"
+python3 -c "import numpy, pandas, scipy; print('OK')" # if dependcies are downloaded, you will see OK printed 
 ```
 If they are not already downloaded, run this on the command line:
 
 ```bash
 pip install numpy pandas scipy
 ```
+
 Install pyliftover which is required by gwas_parsing.py:
 
 ```bash
 pip install pyliftover --break-system-packages
 ```
 
-Check that genomic_tools_lib is accessible:
 
+Check that genomic_tools_lib is accessible:
 ```bash
 python3 -c "import sys; sys.path.insert(0, '~/COMP383_GroupProject/summary-gwas-imputation/src'); import genomic_tools_lib; print('OK')"
 ```
@@ -114,12 +115,14 @@ The script automatically detects column names from the input file.
 We do not need to specify column names for most standard GWAS files.
 
 On command line (to use with your own gwas summary statistics with a different name, replace path/to/your_gwas_file.tsv.gz with path to your file: 
+Only two inputs needed with Metaxcan: path of raw data, and path to harmonized data
 ```bash
 python3 run_gwas_harmonization.py \
         -i /path/to/your_gwas_file.tsv.gz \
         -o /path/to/your_harmonized_output.txt.gz
 ```
-To use with the GWAS form the class server:
+
+To use with the GWAS from the class server:
 
 ```bash
     python3 run_gwas_harmonization.py \
@@ -196,7 +199,6 @@ To run harmonized GWAS on S-Predixcan:
 ```
 
 Example with harmonizaed All of Us from class server:
-
 
 ```bash
     python3 ~/Final_Project/MetaXcan/software/SPrediXcan.py \
