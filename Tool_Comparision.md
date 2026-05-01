@@ -13,5 +13,5 @@ This is a table comparing the harmonization tools with each other.
 |SPredixcan - Percentage of SNPs - ADHD-GWAS| 87% | 85%  | 86% | 
 |SPredixcan - Percentage of SNPs - All of us | 77% | 0% | 0% | 
 |SPredixcan - Percentage of SNPs - Giant Consortium | 51% | N/A | N/A | 
-|SPredixcan - Percentage of SNPs - S | 51% | N/A | N/A | 
+|SPredixcan - Percentage of SNPs - Parkinsons GWAS | 89% | N/A | N/A | 
 
